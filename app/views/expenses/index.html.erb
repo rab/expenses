@@ -1,0 +1,66 @@
+<h1>Listing expenses<%= " for #{params[:year]}" unless params[:year].blank? %></h1>
+
+<div class="ui">
+  <%= link_to 'New expense', new_expense_path %> |
+  <% form_tag(expenses_path, :method => :get) do -%>
+    <%= check_box_tag :subtotals, 'true', !params[:subtotals].blank? %>&nbsp;<label for="subtotals">Subtotals?</label>
+    <% taxyear = thisyear = Date.today.year -%>
+    <% taxyear -= 1 if Time.now < Time.parse('April 15 23:59:59') -%>
+    <%= select_year(taxyear, :start_year => thisyear, :end_year => thisyear - 10,
+                    :prefix => 'year', :discard_type => true, :include_blank => true) %>
+    <%= submit_tag "Year", :name => nil %>
+  <% end -%>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>When</th>
+      <th>Vendor</th>
+      <th>Amount</th>
+      <th>
+        <%= link_to_if(params[:subtotals].nil?, "Category",
+                       expenses_path(:subtotals => true, :year => params[:year]),
+                       :title => 'Grouped with Subtotals') do |txt|
+              link_to txt, expenses_path(:year => params[:year]), :title => 'by Date, Ungrouped'
+            end -%>
+      </th>
+      <th class="ui">&nbsp;</th>
+      <th class="ui">&nbsp;</th>
+      <th class="ui">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for expense in @expenses %>
+      <tr class="<%= cycle 'one', 'two', 'three', 'four', 'five', 'six' %>">
+        <td><span title="<%= expense.when %>"><%= expense.when.to_date %></span></td>
+        <td <%= 'class="summary"' if expense.new_record? %>><%=h expense.vendor %></td>
+        <td class="currency"><%= number_to_currency expense.amount %></td>
+        <td>
+          <% if expense.new_record? %>
+            <strong><%=h expense.category_name %></strong>
+          <% else -%>
+            <%= in_place_collection_field(expense, :expense, :category,
+                                          @category_choices,
+                                          {},
+                                          { :load_text_url => { :action => 'get_expense_category',
+                                              :id => expense.id } }) unless expense.category_id.nil? %>
+          <% end -%>
+        </td>
+        <td class="ui"><%= link_to 'Show', expense unless expense.new_record? %></td>
+        <td class="ui"><%= link_to 'Edit', edit_expense_path(expense) unless expense.new_record? %></td>
+        <td class="ui"><%= link_to('Destroy', expense_path(:id => expense, :subtotals => !params[:subtotals].blank?,
+                                                           :year => params[:year]),
+                                   :confirm => "Destroy this #{number_to_currency expense.amount} expense" +
+                                   " from #{expense.vendor} on #{expense.when.to_date}.\n\nAre you sure? ",
+                                   :method => :delete) unless expense.new_record? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<div class="ui">
+  <%= link_to 'New expense', new_expense_path %>
+</div>

@@ -1,0 +1,29 @@
+<p>
+  <b>Driven on:</b>
+  <%=h @mileage.driven_on %>
+</p>
+
+<p>
+  <b>Starting:</b>
+  <%=h @mileage.starting %>
+</p>
+
+<p>
+  <b>Ending:</b>
+  <%=h @mileage.ending %>
+</p>
+
+<p>
+  <b>Trip:</b>
+  <%=h @mileage.trip %>
+</p>
+
+<p>
+  <b>Purpose:</b>
+  <%=h @mileage.purpose %>
+</p>
+
+<div class="ui">
+  <%= link_to 'Edit', edit_mileage_path(@mileage) %> |
+  <%= link_to 'Back', mileages_path %>
+</div>

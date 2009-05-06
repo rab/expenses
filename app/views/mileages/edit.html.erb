@@ -1,0 +1,14 @@
+<h1>Editing mileage</h1>
+
+<%= error_messages_for :mileage %>
+
+<% form_for(@mileage) do |f| %>
+  <%= render :partial => 'form', :object => f %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @mileage %> |
+<%= link_to 'Back', mileages_path %>

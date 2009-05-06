@@ -1,0 +1,26 @@
+  <p>
+    <label for="mileage_driven_on">Driven on</label><br />
+    <%= form.date_select :driven_on %>
+  </p>
+
+  <p>
+    <label for="mileage_starting">Starting</label><br />
+    <%= form.text_field :starting %>
+  </p>
+
+  <p>
+    <label for="mileage_ending">Ending</label><br />
+    <%= form.text_field :ending,
+        :onblur => "this.form.mileage_trip.value = Number(this.value) - Number(this.form.mileage_starting.value)" %>
+  </p>
+
+  <p>
+    <label for="mileage_trip">Trip</label><br />
+    <%= form.text_field :trip,
+        :onblur => "this.form.mileage_ending.value = Number(this.value) + Number(this.form.mileage_starting.value)" %>
+  </p>
+
+  <p>
+    <label for="mileage_purpose">Purpose</label><br />
+    <%= form.text_field :purpose %>
+  </p>

@@ -1,0 +1,19 @@
+  <p>
+    <label for="expense_when">When</label><br />
+    <%= form.datetime_select :when %>
+  </p>
+
+  <p>
+    <label for="expense_vendor">Vendor</label><br />
+    <%= form.text_field :vendor %>
+  </p>
+
+  <p>
+    <label for="expense_amount">Amount</label><br />
+    <%= form.text_field :amount %>
+  </p>
+
+  <p>
+    <label for="expense_category_id">Category</label><br />
+    <%= form.select :category_id, @category_choices %>
+  </p>

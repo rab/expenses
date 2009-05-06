@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  driven_on: 2008-04-07
+  starting: 2
+  ending: 3
+  trip: 1
+  purpose: MyString
+
+two:
+  driven_on: 2008-04-07
+  starting: 4
+  ending: 9
+  trip: 5
+  purpose: MyString

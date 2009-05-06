@@ -1,0 +1,38 @@
+a:link,
+a:visited { color: black; background-color: inherit;
+	font-weight: bold; text-decoration: underline; }
+
+html	{ width: auto; font-size: 10pt; }
+body	{
+	background-color: #FFF;
+	color: #000;
+	margin: 0px 0px 1cm 0px;
+	width: auto;
+	height: auto;
+	font-family: Verdana, Tahoma, Geneva, Arial, Helvetica, sans-serif;
+	font-family: "Times Roman", serif;
+}
+.summary {
+  font-weight: bold;
+  text-align: right;
+}
+.currency {
+  text-align: right;
+}
+.numeric {
+  text-align: right;
+}
+.ui {
+  display: none;
+}
+thead tr th {
+  border-bottom: 2px solid black;
+}
+.one td, .two td, .four td, .five td {
+  background-color: #ffffff;
+  border-bottom: none;
+}
+.three td, .six td {
+  background-color: #ffffff;
+  border-bottom: 1px solid gray;
+}

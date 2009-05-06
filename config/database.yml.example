@@ -1,0 +1,53 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MySQL driver:
+#   gem install mysql
+# On Mac OS X:
+#   sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
+# On Mac OS X Leopard:
+#   sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+#       This sets the ARCHFLAGS environment variable to your native architecture
+# On Windows:
+#   gem install mysql
+#       Choose the win32 build.
+#       Install MySQL and put its /bin directory on your path.
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+
+# vvv Copy the following two YAML maps to a file called config/mydatabase.yml
+
+login: &login
+  username: expenses
+  password: expenses
+
+connection: &connection
+  host: localhost
+  socket: /tmp/mysql.sock
+  encoding: utf8
+
+# ^^^ Copy the previous two YAML maps to a file called config/mydatabase.yml
+
+<%= file = File.join(RAILS_ROOT, "config", "mydatabase.yml")
+    IO.read(file) if File.exist?(file) %>
+
+development:
+  adapter: mysql
+  database: expenses_development
+  <<: *login
+  <<: *connection
+
+# Warning: The database defined as 'test' will be erased and
+# re-generated from your development database when you run 'rake'.
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql
+  database: expenses_test
+  <<: *login
+  <<: *connection
+
+production:
+  adapter: mysql
+  database: expenses_production
+  <<: *login
+  <<: *connection

@@ -1,0 +1,106 @@
+meals50:
+  name: "Meals and Entertainment - 50%"
+  position: "1"
+communication:
+  name: Communication
+  id: "40"
+  position: "2"
+utilities:
+  name: Utilities
+  position: "3"
+supplies:
+  name: Supplies
+  position: "4"
+advertising:
+  name: Advertising
+  position: "5"
+health:
+  name: Health Insurance
+  position: "6"
+business_insurance:
+  name: Business Insurance
+  position: "7"
+travel:
+  name: Business Travel
+  position: "8"
+parking:
+  name: Business Parking
+  position: "9"
+tolls:
+  name: Business Tolls
+  position: "10"
+pension_contribution:
+  name: Pension Plan contribution
+  position: "11"
+contract_labor:
+  name: Contract Labor
+  position: "12"
+other_office:
+  name: Other office expense
+  position: "13"
+miscellaneous:
+  name: Miscellaneous expenses
+  position: "14"
+conferences:
+  name: Conferences/Conventions (Misc)
+  position: "15"
+misc_pension_admin:
+  name: Pension Plan admin (Misc)
+  position: "16"
+misc_sw:
+  name: Software (Misc)
+  position: "17"
+misc_books:
+  name: Books (Misc)
+  position: "18"
+assets:
+  name: Assets
+  position: "19"
+taxes_licensing:
+  name: Taxes and Licensing
+  position: "20"
+lt_care:
+  name: Long-term care insurance
+  position: "21"
+empl_ins:
+  name: Insurance for employees
+  position: "22"
+office_mortgage:
+  name: Office building mortgage interest
+  position: "23"
+other_interest:
+  name: Credit card, loan, and other interest
+  position: "24"
+repairs:
+  name: Repairs and Maintenance
+  position: "25"
+equipment:
+  name: Equipment Rental
+  position: "26"
+building_rental:
+  name: Building or Land rental
+  position: "27"
+professional:
+  name: Professional Fees
+  position: "28"
+depletion:
+  name: Depletion
+  position: "29"
+wages:
+  name: Employee Wages
+  position: "30"
+work_credits:
+  name: Work Credits
+  position: "31"
+benefits:
+  name: Employee Benefits
+  position: "32"
+pension_startup:
+  name: Pension Plan start-up costs
+  position: "33"
+commissions:
+  name: Commissions
+  position: "34"
+meals100:
+  name: Meals and Entertainment - 100%
+  position: "35"

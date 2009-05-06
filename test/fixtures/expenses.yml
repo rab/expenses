@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  when: 2008-03-24 11:55:34
+  vendor: MyString
+  amount: 1.00
+  category_id: 1
+
+two:
+  when: 2008-03-24 11:55:34
+  vendor: MyString
+  amount: 0.01
+  category_id: 1

@@ -1,0 +1,19 @@
+<p>
+  <b>When:</b> <%=h @expense.when %>
+</p>
+<p>
+  <b>Vendor:</b> <%=h @expense.vendor %>
+</p>
+<p>
+  <b>Amount:</b> <%= number_to_currency @expense.amount %>
+</p>
+<p>
+  <b>Category:</b>
+  <%= in_place_collection_field(@expense, :expense, :category, @category_choices) %>
+</p>
+
+
+<div class="ui">
+  <%= link_to 'Edit', edit_expense_path(@expense) %> |
+  <%= link_to 'Back', expenses_path %>
+</div>

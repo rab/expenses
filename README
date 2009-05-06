@@ -1,0 +1,23 @@
+== Expenses
+
+In order to track expenses and mileages for the purpose of easily filing
+taxes.  It lets you record expenses throughout the year as you go or all at
+once (if you start late or are just procrastinating).
+
+=== Expenses
+
+You enter date, vendor, amount, and a category.  There are a number of
+categories in the test/fixtures/categories.yml file that you can load with:
+
+    rake db:fixtures:load FIXTURES=categories
+
+You are free to edit the fixture to put the categories in an order that makes
+the data entry more convenient for you or change the names.  These names make
+sense as-is for those (like me) who use TurboTax because they match.
+
+=== Mileages
+
+It's useful to put an entry with the same starting and ending odometer reading
+on the first day of the year.
+
+The "split" is useful when the IRS changes the standard mileage rate mid-year.

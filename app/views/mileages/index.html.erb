@@ -1,0 +1,60 @@
+<h1>Listing mileages<%= " for #{params[:year]}" unless params[:year].blank? %></h1>
+
+<div class="ui">
+  <%= link_to 'New mileage', new_mileage_path %> |
+  <% form_tag mileages_path, :method => :get do -%>
+    <label for="subtotal">Subtotal Date:</label>
+    <%= text_field_tag(:subtotal, params[:subtotal],
+                       :title => 'Useful if the standard mileage rate changes during the year') %>
+    <% taxyear = thisyear = Date.today.year -%>
+    <% taxyear -= 1 if Time.now < Time.parse('April 15 23:59:59') -%>
+    <%= select_year(taxyear, :start_year => thisyear, :end_year => thisyear - 10,
+                    :prefix => 'year', :discard_type => true, :include_blank => true) %>
+    <%= submit_tag "Year", :name => nil %>
+  <% end -%>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Driven on</th>
+      <th>Starting</th>
+      <th>Ending</th>
+      <th>Trip</th>
+      <th>Purpose</th>
+      <th class="ui">&nbsp;</th>
+      <th class="ui">&nbsp;</th>
+      <th class="ui">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for mileage in @mileages %>
+      <tr class="<%= cycle 'one', 'two', 'three', 'four', 'five', 'six' %>">
+        <td><%=h mileage.driven_on %></td>
+        <td class="numeric"><%=h mileage.starting %></td>
+        <td class="numeric"><%=h mileage.ending unless mileage.trip.zero?%></td>
+        <td class="numeric"><%=h mileage.trip   unless mileage.trip.zero? %></td>
+        <td>
+          <% if mileage.new_record? -%>
+            <strong>&laquo;&nbsp;<%=h mileage.purpose %> </strong>
+          <% else -%>
+            <%=h mileage.purpose %>
+          <% end -%>
+        </td>
+        <td class="ui"><%= link_to 'Show', mileage unless mileage.new_record? %></td>
+        <td class="ui"><%= link_to 'Edit', edit_mileage_path(mileage) unless mileage.new_record? %></td>
+        <td class="ui"><%= link_to('Destroy', mileage,
+                                   :confirm => "Destroy the record of #{mileage.trip}" +
+                                   " mile#{'s' unless mileage.trip == 1}" +
+                                   " from #{mileage.driven_on}.\n\nAre you sure? ",
+                                   :method => :delete) unless mileage.new_record? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<div class="ui">
+  <%= link_to 'New mileage', new_mileage_path %>
+</div>
