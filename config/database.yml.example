@@ -28,7 +28,7 @@ connection: &connection
 
 # ^^^ Copy the previous two YAML maps to a file called config/mydatabase.yml
 
-<%= file = File.join(RAILS_ROOT, "config", "mydatabase.yml")
+<%= file = File.join(File.dirname(__FILE__), "mydatabase.yml")
     IO.read(file) if File.exist?(file) %>
 
 development:
