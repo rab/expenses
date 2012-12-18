@@ -30,6 +30,10 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem 'mongrel'
+end
+
 # group :development do
 #   gem 'heroku'
 #   gem 'taps'
